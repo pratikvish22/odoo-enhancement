@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    container_name: odoo_db
+    env_file:
+      - ./env/db.env
+    ports:
+      - "5433:5432"
+    volumes:
+      - odoo_db_data:/var/lib/postgresql/data
+
+  odoo:
+    image: odoo:15
+    container_name: odoo_15
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    volumes:
+      - ./custom_addons:/mnt/extra-addons
+      - odoo_data:/var/lib/odoo
+      - ./etc/odoo.conf:/etc/odoo/odoo.conf
+      - ./etc/odoo.conf:/etc/odoo.conf
+    env_file:
+      - ./env/odoo.env
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+
+volumes:
+  odoo_db_data:
+  odoo_data:
