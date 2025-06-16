@@ -1,7 +1,7 @@
 import logging
 from odoo import api, fields, models
 
-_logger = logging.getLogger(__name__)
+_logger = logging.getLogger("--------Sale Order--------")
 
 
 class SaleOrder(models.Model):
@@ -26,4 +26,8 @@ class SaleOrder(models.Model):
                 if line.product_id:
                     total_cost += line.product_id.standard_price * line.product_uom_qty
             order.warehouse_cost = total_cost
-            _logger.debug(f"Computed warehouse cost for sale order ID %s: %s", order.id, total_cost)
+            _logger.debug(
+                f"Computed warehouse cost for sale order ID %s: %s",
+                order.id,
+                total_cost,
+            )

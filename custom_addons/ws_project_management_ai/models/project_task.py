@@ -2,7 +2,7 @@ import logging
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
-_logger = logging.getLogger(__name__)
+_logger = logging.getLogger("--------Project Task--------")
 
 
 class ProjectTask(models.Model):
