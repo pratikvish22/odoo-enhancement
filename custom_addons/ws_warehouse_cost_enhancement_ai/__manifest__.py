@@ -3,8 +3,8 @@
     "version": "15.0.1.0.0",
     "summary": "Show and sync warehouse cost in Sale and Delivery Orders",
     "category": "Sales",
-    "author": "Your Company",
-    "website": "",
+    "author": "Neelima Patwal",
+    "website": "https://www.marsdevs.com",
     "depends": ["sale_management", "stock"],
     "data": [
         "security/ir.model.access.csv",
