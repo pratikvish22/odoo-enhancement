@@ -1,4 +1,7 @@
+import logging
 from odoo import api, fields, models
+
+_logger = logging.getLogger(__name__)
 
 
 class StockPicking(models.Model):
@@ -32,3 +35,4 @@ class StockPicking(models.Model):
                 if move.product_id:
                     total_cost += move.product_id.standard_price * move.product_uom_qty
             picking.warehouse_cost = total_cost
+            _logger.debug(f"Computed warehouse cost for picking ID %s: %s", picking.id, total_cost)

@@ -1,5 +1,8 @@
+import logging
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+
+_logger = logging.getLogger(__name__)
 
 
 class ProjectTask(models.Model):
@@ -18,6 +21,7 @@ class ProjectTask(models.Model):
     def _check_no_circular_dependency(self):
         for task in self:
             if task.id and task._has_circular_dependency(task, set()):
+                _logger.warning(f"Circular dependency detected for task ID %s", task.id)
                 raise ValidationError(_("Circular dependency detected!"))
 
     def _has_circular_dependency(self, task, visited):
@@ -36,4 +40,5 @@ class ProjectTask(models.Model):
             if task.depends_on_ids and any(
                 not dep.stage_id.is_closed for dep in task.depends_on_ids
             ):
+                _logger.info(f"Task ID %s is blocked due to dependencies.", task.id)
                 raise ValidationError(_("Task is blocked because of the dependency."))
