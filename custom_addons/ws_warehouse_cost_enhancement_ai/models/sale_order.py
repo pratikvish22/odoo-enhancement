@@ -27,7 +27,5 @@ class SaleOrder(models.Model):
                     total_cost += line.product_id.standard_price * line.product_uom_qty
             order.warehouse_cost = total_cost
             _logger.debug(
-                f"Computed warehouse cost for sale order ID %s: %s",
-                order.id,
-                total_cost,
+                f"Computed warehouse cost for sale order ID {order.id}: {total_cost}"
             )

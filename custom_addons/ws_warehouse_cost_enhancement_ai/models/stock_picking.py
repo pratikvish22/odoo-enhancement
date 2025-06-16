@@ -36,5 +36,5 @@ class StockPicking(models.Model):
                     total_cost += move.product_id.standard_price * move.product_uom_qty
             picking.warehouse_cost = total_cost
             _logger.debug(
-                f"Computed warehouse cost for picking ID %s: %s", picking.id, total_cost
+                f"Computed warehouse cost for picking ID {picking.id}: {total_cost}"
             )
