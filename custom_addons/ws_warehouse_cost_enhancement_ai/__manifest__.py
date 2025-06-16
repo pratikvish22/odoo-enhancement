@@ -4,6 +4,10 @@
     "summary": "Show and sync warehouse cost in Sale and Delivery Orders",
     "category": "Sales",
     "author": "Neelima",
+    "description": """
+        This module provides the following features:
+        1. Show and sync warehouse cost in Sale and Delivery Orders
+    """,
     "website": "https://www.marsdevs.com",
     "depends": ["sale_management", "stock"],
     "data": [
