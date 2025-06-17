@@ -195,3 +195,5 @@ cython_debug/
 
 
 etc/odoo.conf
+.cursorrules
+.cursor/*
